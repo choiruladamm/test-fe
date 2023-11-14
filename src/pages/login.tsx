@@ -37,10 +37,8 @@ const LoginPage: FC<LoginPageProps> = ({}) => {
   });
 
   const onSubmitForm = async (values: z.infer<typeof loginDto>) => {
-    const baseURL = import.meta.env.VITE_BASE_URL;
-    // const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
-    const response = await fetch(`${baseURL}/auth/login`, {
+    const response = await fetch(`https://devfortest.my.id/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -29,20 +29,21 @@ const ChangePasswordPage: FC<ChangePasswordPageProps> = ({}) => {
 
   const onSubmitForm = async (values: z.infer<typeof changePasswordDto>) => {
     console.log(values);
-    const baseURL = import.meta.env.VITE_BASE_URL;
-
-    const response = await fetch(`${baseURL}/user/change-password`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token') as string}`,
+    const response = await fetch(
+      `https://devfortest.my.id/user/change-password`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token') as string}`,
+        },
+        body: JSON.stringify({
+          oldPassword: values.oldPassword,
+          newPassword: values.newPassword,
+          confirmNewPassword: values.newPassword,
+        }),
       },
-      body: JSON.stringify({
-        oldPassword: values.oldPassword,
-        newPassword: values.newPassword,
-        confirmNewPassword: values.newPassword,
-      }),
-    });
+    );
 
     if (response.ok) {
       const data = await response.json()

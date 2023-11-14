@@ -32,7 +32,7 @@ const UserPage: FC<UserPageProps> = ({}) => {
   });
 
   useEffect(() => {
-    const baseURL = import.meta.env.VITE_BASE_URL;
+    const baseURL = 'https://devfortest.my.id'
     fetch(`${baseURL}/user`, {
       method: 'GET',
       headers: {
@@ -57,9 +57,7 @@ const UserPage: FC<UserPageProps> = ({}) => {
 
   const onSubmitForm = async (values: z.infer<typeof updateUserDto>) => {
     console.log(values);
-    const baseURL = import.meta.env.VITE_BASE_URL;
-
-    const response = await fetch(`${baseURL}/user`, {
+    const response = await fetch(`https://devfortest.my.id/user`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

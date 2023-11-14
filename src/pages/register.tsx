@@ -44,7 +44,7 @@ const RegisterPage: FC<RegisterPageProps> = ({}) => {
     console.log(values);
     const baseURL = import.meta.env.VITE_BASE_URL;
 
-    const response = await fetch(`${baseURL}/auth/register`, {
+    const response = await fetch(`https://devfortest.my.id/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const RegisterPage: FC<RegisterPageProps> = ({}) => {
         email: values.email,
         password: values.password,
         confirmPassword: values.confirmPassword,
-        photo: values.photo
+        photo: values.photo,
       }),
     });
 

@@ -18,7 +18,7 @@ const HomePage: FC<HomePageProps> = ({}) => {
   const [paginationPost, setPaginationPost] = useState([]);
 
   const [query, setQuery] = useState('');
-  const baseURL = import.meta.env.VITE_BASE_URL;
+  const baseURL = 'https://devfortest.my.id'
   const getData = async () => {
     http.get(`/post?page=1&limit=8`).then((data) => {
       setListPost(data.data);
