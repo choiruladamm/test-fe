@@ -2,7 +2,7 @@
 
 ## Demo
 
-🌑 [Live Demo](https://admm-test-fe.vercel.app/login)
+🌑 [Live Demo](https://adm-test.vercel.app/login)
 
 ## Built with
 
@@ -28,12 +28,7 @@ git clone https://github.com/choiruladamm/test-fe
 npm i
 ```
 
-3. create .env files
-```sh
-VITE_BASE_URL=https://devfortest.my.id
-```
-
-4. Run the project.
+3. Run the project.
 
 ```sh
 npm run dev
