@@ -2,7 +2,7 @@
 
 ## Demo
 
-🌑 [Live Demo](https://adm-test.vercel.app/login)
+🌑 [Live Demo](https://adm-test-7424dl565-choiruladamm.vercel.app/login)
 
 ## Built with
 
