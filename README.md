@@ -1,53 +1,40 @@
-<div align="center">
-  <h2>⚡️ vite-ts-tailwind-starter</h2>
-  <p>React + Tailwind CSS + TypeScript + shadcnui starter template.</p>
-  <p>Made by <a href="https://choiruladamm.vercel.app/">Choirul Adamm</a></p>
-</div>
+<h1 align="center">Test FE Mini Sosmed</h1>
 
-## Features (will keep updating new features)
+## Demo
 
-This repository is 🔋 battery packed with:
+🌑 [Live Demo](https://admm-test-fe.vercel.app/login)
 
-- ⚡️ Vite
-- ⚛️ React 18
-- ✨ TypeScript
-- 💨 Tailwind CSS 3 
-- 💎 ShadcnUI — Beautifully designed components built with Radix UI and Tailwind CSS.
-- 💖 Prettier — Sorting Classes & Format your code consistently
+## Built with
 
-## Getting Started
+- React
+- TypeScript
+- Framer Motion
+- React Router
+- TailwindCSS & Radix UI
 
-### 1. Clone this template using one of the two ways
+## Development
 
-1. Using `degit`
+Here are the steps to run the project locally.
 
-   ```bash
-   npx degit choiruladamm/vite-ts-tailwind-starter YOUR_APP_NAME
-   ```
+1. Clone the repository.
 
-2. Use this repository as template
-
-   **Disclosure:** by using this repository as a template, there will be an attribution on your repository.
-
-   I'll appreciate if you do, so this template can be known by others too 😄
-
-   ![Use as template](https://github.com/choiruladamm/vite-ts-tailwind-starter/assets/109071310/eff81e37-b2ab-4bc8-a4fc-f6dc40c1e225)
-
-3. Deploy to Vercel
-
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-
-### 2. Install dependencies
-
-```bash
-npm install
+```sh
+git clone https://github.com/choiruladamm/test-fe
 ```
 
-### 3. Run the development server
+2. Install the dependencies.
 
-You can start the server using this command:
+```sh
+npm i
+```
 
-```bash
+3. create .env files
+```sh
+VITE_BASE_URL=https://devfortest.my.id
+```
+
+4. Run the project.
+
+```sh
 npm run dev
 ```

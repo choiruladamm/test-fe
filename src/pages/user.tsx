@@ -13,6 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { toast } from '@/components/ui/use-toast';
 
 interface UserPageProps {}
 
@@ -54,8 +55,33 @@ const UserPage: FC<UserPageProps> = ({}) => {
       });
   }, []);
 
-  const onSubmitForm = (velues: z.infer<typeof updateUserDto>) => {
-    console.log(velues);
+  const onSubmitForm = async (values: z.infer<typeof updateUserDto>) => {
+    console.log(values);
+    const baseURL = import.meta.env.VITE_BASE_URL;
+
+    const response = await fetch(`${baseURL}/user`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token') as string}`,
+      },
+      body: JSON.stringify({
+        name: values.name,
+        username: values.username,
+        email: values.email,
+        photo: photo,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data.data);
+      toast({
+        duration: 2000,
+        title: 'Succesfully update user',
+      });
+      setIsEditing(false)
+    }
   };
 
   return (

@@ -43,7 +43,6 @@ const RegisterPage: FC<RegisterPageProps> = ({}) => {
   const onSubmitForm = async (values: z.infer<typeof registerDto>) => {
     console.log(values);
     const baseURL = import.meta.env.VITE_BASE_URL;
-    // const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
     const response = await fetch(`${baseURL}/auth/register`, {
       method: 'POST',
