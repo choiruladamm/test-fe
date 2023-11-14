@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Form,
   FormControl,
@@ -21,10 +21,13 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { registerDto } from '@/dto/registerDto';
+import { toast } from '@/components/ui/use-toast';
 
 interface RegisterPageProps {}
 
 const RegisterPage: FC<RegisterPageProps> = ({}) => {
+  const [imagePreview, setImagePreview] = useState(null);
+  const navigate = useNavigate()
   const form = useForm<z.infer<typeof registerDto>>({
     resolver: zodResolver(registerDto),
     defaultValues: {
@@ -37,9 +40,46 @@ const RegisterPage: FC<RegisterPageProps> = ({}) => {
     },
   });
 
-  const onSubmitForm = (values: z.infer<typeof registerDto>) => {
+  const onSubmitForm = async (values: z.infer<typeof registerDto>) => {
     console.log(values);
+    const baseURL = import.meta.env.VITE_BASE_URL;
+    // const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
+
+    const response = await fetch(`${baseURL}/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+      body: JSON.stringify({
+        name: values.name,
+        username: values.username,
+        email: values.email,
+        password: values.password,
+        confirmPassword: values.confirmPassword,
+        photo: values.photo
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem('token', data.data.token);
+      // window.location.href = '/';
+      navigate('/login');
+      toast({
+        duration: 2000,
+        title: 'Register succes',
+      });
+    } else {
+      toast({
+        duration: 2000,
+        variant: 'destructive',
+        title: 'Register failed',
+      });
+    }
   };
+
+  
 
   return (
     <div className='mx-4 grid min-h-screen place-items-center md:mx-0'>
@@ -132,12 +172,22 @@ const RegisterPage: FC<RegisterPageProps> = ({}) => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input type='file' placeholder='' {...field} />
+                        <Input
+                          type='file'
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+                {imagePreview && (
+                  <img
+                    src={imagePreview}
+                    alt='Preview'
+                    style={{ maxWidth: '100px' }}
+                  />
+                )}
               </div>
               <Button type='submit' className='mt-7 w-full'>
                 Register
